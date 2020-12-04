@@ -1,3 +1,4 @@
+import playKick from "./kick.js";
 import playSnare from "./snare.js";
 import playWhiteNoise from "./white-noise.js";
 
@@ -8,5 +9,8 @@ export default {
   },
   w() {
     playSnare();
+  },
+  e() {
+    playKick();
   },
 };
