@@ -24,6 +24,7 @@ export const buffer = audioContext.createBuffer(
   DEFAULT_SAMPLE_RATE
 );
 export { gainControl as volumeControl };
+
 export const play = (connection = gainControl) => {
   const noiseSource = audioContext.createBufferSource();
 
