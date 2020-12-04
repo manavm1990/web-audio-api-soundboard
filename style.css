@@ -6,3 +6,9 @@ body {
 h1 {
   text-align: center;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 6em;
+}
