@@ -1,5 +1,5 @@
 import { createOscillator } from "./lib.js";
 
 export default () => {
-  createOscillator(15000, 1);
+  createOscillator({ freq: 15000, timing: 1 });
 };

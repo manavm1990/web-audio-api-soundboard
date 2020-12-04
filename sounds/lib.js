@@ -3,17 +3,13 @@ const audioContext = new AudioContext();
 const DEFAULT_SAMPLE_RATE = audioContext.sampleRate;
 const secs = 1;
 
-// 'Activate' some volume ('gain') 🔈
-const gainControl = audioContext.createGain();
+const createGain = (val = 0.5, delay = 0) => {
+  const gainControl = audioContext.createGain();
+  gainControl.gain.setValueAtTime(val, delay);
+  return gainControl;
+};
 
-gainControl.gain.setValueAtTime(
-  0.5,
-
-  // No delay
-  0
-);
-
-gainControl.connect(audioContext.destination);
+const primaryGainControl = createGain().connect(audioContext.destination);
 
 export { audioContext as context };
 
@@ -24,30 +20,37 @@ export const buffer = audioContext.createBuffer(
   DEFAULT_SAMPLE_RATE
 );
 
-export const createOscillator = (freq = 150, timing = 0.5) => {
-  const gain = audioContext.createGain();
+export const createOscillator = ({
+  freq = 150,
+  timing = 0.5,
+  gainVal,
+  gainDelay,
+} = {}) => {
+  const oscGain = createGain(gainVal, gainDelay);
   const oscillator = audioContext.createOscillator();
 
-  gain.gain.setValueAtTime(1, 0);
-  gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
-  gain.connect(gainControl);
+  oscGain.gain.exponentialRampToValueAtTime(
+    0.001,
+    audioContext.currentTime + 0.5
+  );
+  oscGain.connect(primaryGainControl);
 
   oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
   oscillator.frequency.exponentialRampToValueAtTime(
     0.001,
     audioContext.currentTime + timing
   );
-  oscillator.connect(gain);
+  oscillator.connect(oscGain);
   oscillator.start();
 
   // Stop after half second
   oscillator.stop(audioContext.currentTime + 0.5);
 };
 
-export { gainControl as volumeControl };
+export { primaryGainControl as volumeControl };
 
 // TODO: Consider whether this needs to abstracted
-export const play = (connection = gainControl) => {
+export const play = (connection = primaryGainControl) => {
   const noiseSource = audioContext.createBufferSource();
 
   noiseSource.buffer = buffer;
