@@ -49,6 +49,7 @@ export const createOscillator = (freq = 150, timing = 0.5) => {
 
 export { gainControl as volumeControl };
 
+// TODO: Consider whether this needs to abstracted
 export const play = (connection = gainControl) => {
   const noiseSource = audioContext.createBufferSource();
 
