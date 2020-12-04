@@ -18,11 +18,18 @@ button {
   font-size: 6em;
 }
 
-#white-noise p {
-  margin-top: 0;
+/* Grids */
+main {
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
 }
 
-/* Utility */
+/* Classes */
+.btn-caption {
+  margin-top: 4px;
+}
+
+/* Utility Classes */
 .align-center {
   align-items: center;
 }
@@ -33,6 +40,10 @@ button {
 
 .flex-column {
   flex-direction: column;
+}
+
+.grid {
+  display: grid;
 }
 
 .justify-center {
