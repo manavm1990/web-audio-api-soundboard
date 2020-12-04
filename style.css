@@ -29,6 +29,14 @@ main {
   margin-top: 4px;
 }
 
+.instrument {
+  transition: text-shadow 0.1s ease-in-out;
+}
+
+.instrument:hover {
+  text-shadow: 0 4px 1rem rgba(145, 92, 182, 0.4);
+}
+
 /* Utility Classes */
 .align-center {
   align-items: center;
