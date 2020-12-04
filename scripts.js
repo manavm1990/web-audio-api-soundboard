@@ -1,3 +1,3 @@
-import play from "./lib/index.js";
+import { playWhiteNoise } from "./lib/index.js";
 
-document.querySelector("button").addEventListener("click", play);
+document.querySelector("button").addEventListener("click", playWhiteNoise);
