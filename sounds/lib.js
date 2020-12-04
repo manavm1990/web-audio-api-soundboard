@@ -20,7 +20,7 @@ export const buffer = audioContext.createBuffer(
   DEFAULT_SAMPLE_RATE
 );
 
-export const createOscillator = ({
+export const createGainOscillator = ({
   freq = 150,
   gainVal,
   gainDelay,
