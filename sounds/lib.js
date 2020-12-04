@@ -7,7 +7,7 @@ const secs = 1;
 const gainControl = audioContext.createGain();
 
 gainControl.gain.setValueAtTime(
-  0.4,
+  0.5,
 
   // No delay
   0
