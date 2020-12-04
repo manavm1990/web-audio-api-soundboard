@@ -17,6 +17,8 @@ export default () => {
   const noiseSource = context.createBufferSource();
 
   noiseSource.buffer = buffer;
+
+  // Connect directly to volume
   noiseSource.connect(volumeControl);
   noiseSource.start();
 };
