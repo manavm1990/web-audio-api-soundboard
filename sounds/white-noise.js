@@ -28,6 +28,5 @@ export default () => {
 
   noiseSource.buffer = buffer;
   noiseSource.connect(volumeControl);
-  volumeControl.connect(context.destination);
   noiseSource.start();
 };

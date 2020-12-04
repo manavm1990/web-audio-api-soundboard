@@ -10,5 +10,7 @@ gainControl.gain.setValueAtTime(
   0
 );
 
+gainControl.connect(audioContext.destination);
+
 export { audioContext as context };
 export { gainControl as volumeControl };
