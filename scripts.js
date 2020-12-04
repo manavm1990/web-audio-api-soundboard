@@ -1,4 +1,4 @@
-import play from "./lib/index.js";
+import play from "./sounds/index.js";
 
 document.querySelectorAll("button").forEach((button) => {
   button.addEventListener("click", function playInstrument() {
@@ -7,5 +7,8 @@ document.querySelectorAll("button").forEach((button) => {
 });
 
 document.addEventListener("keydown", ({ key }) => {
-  play[key.toLowerCase()]();
+  const k = key.toLowerCase();
+  if (k in play) {
+    play[k]();
+  }
 });
