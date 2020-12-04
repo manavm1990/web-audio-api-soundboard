@@ -1,15 +1,5 @@
-import { context, volumeControl } from "./lib.js";
+import { buffer, context, volumeControl } from "./lib.js";
 import getRandomNum from "../utils.js";
-
-const DEFAULT_SAMPLE_RATE = context.sampleRate;
-const secs = 1;
-
-// This gives us a mono (one channel) buffer that holds 1 second worth of audio data.
-const buffer = context.createBuffer(
-  1,
-  DEFAULT_SAMPLE_RATE * secs,
-  DEFAULT_SAMPLE_RATE
-);
 
 const channelData = buffer.getChannelData(
   // Which channel? (Only 1 here)
