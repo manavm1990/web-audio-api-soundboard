@@ -1,4 +1,4 @@
-import { buffer, context, volumeControl } from "./lib.js";
+import { buffer, context, play, volumeControl } from "./lib.js";
 import getRandomNum from "../utils.js";
 
 const channelData = buffer.getChannelData(
@@ -13,12 +13,5 @@ for (let i = 0; i < channelData.length; i++) {
 }
 
 export default () => {
-  // ⚠️ You can only play a source node once.
-  const noiseSource = context.createBufferSource();
-
-  noiseSource.buffer = buffer;
-
-  // Connect directly to volume
-  noiseSource.connect(volumeControl);
-  noiseSource.start();
+  play();
 };

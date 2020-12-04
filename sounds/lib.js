@@ -24,3 +24,12 @@ export const buffer = audioContext.createBuffer(
   DEFAULT_SAMPLE_RATE
 );
 export { gainControl as volumeControl };
+export const play = (connection = gainControl) => {
+  const noiseSource = audioContext.createBufferSource();
+
+  noiseSource.buffer = buffer;
+
+  // Connect to volume by way of filter
+  noiseSource.connect(connection);
+  noiseSource.start();
+};
