@@ -22,23 +22,26 @@ export const buffer = audioContext.createBuffer(
 
 export const createOscillator = ({
   freq = 150,
-  timing = 0.5,
   gainVal,
   gainDelay,
+  gainRampValue = 0.001,
+  gainRampTiming = 0.5,
+  oscRampValue = 0.001,
+  oscRampTiming = 0.5,
 } = {}) => {
   const oscGain = createGain(gainVal, gainDelay);
   const oscillator = audioContext.createOscillator();
 
   oscGain.gain.exponentialRampToValueAtTime(
-    0.001,
-    audioContext.currentTime + 0.5
+    gainRampValue,
+    audioContext.currentTime + gainRampTiming
   );
   oscGain.connect(primaryGainControl);
 
   oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
   oscillator.frequency.exponentialRampToValueAtTime(
-    0.001,
-    audioContext.currentTime + timing
+    oscRampValue,
+    audioContext.currentTime + oscRampTiming
   );
   oscillator.connect(oscGain);
   oscillator.start();
