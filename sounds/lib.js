@@ -23,6 +23,30 @@ export const buffer = audioContext.createBuffer(
   DEFAULT_SAMPLE_RATE * secs,
   DEFAULT_SAMPLE_RATE
 );
+
+export const createOscillator = (freq = 150, timing = 0.5) => {
+  const kickGain = audioContext.createGain();
+  const kickOscillator = audioContext.createOscillator();
+
+  kickGain.gain.setValueAtTime(1, 0);
+  kickGain.gain.exponentialRampToValueAtTime(
+    0.001,
+    audioContext.currentTime + 0.5
+  );
+  kickGain.connect(gainControl);
+
+  kickOscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
+  kickOscillator.frequency.exponentialRampToValueAtTime(
+    0.001,
+    audioContext.currentTime + timing
+  );
+  kickOscillator.connect(kickGain);
+  kickOscillator.start();
+
+  // Stop after half second
+  kickOscillator.stop(audioContext.currentTime + 0.5);
+};
+
 export { gainControl as volumeControl };
 
 export const play = (connection = gainControl) => {
