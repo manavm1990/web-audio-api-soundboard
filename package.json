@@ -2,24 +2,38 @@
   "name": "web-audio-demo",
   "version": "1.1.0",
   "private": true,
-  "main": "index.js",
+  "targets": {
+    "default": {
+      "context": "node",
+      "engines": {
+        "node": "10"
+      }
+    }
+  },
+  "engines": {
+    "node": "10"
+  },
   "scripts": {
-    "start": "browser-sync start --server --files '*.html, *.css, **/*.js'"
+    "start": "parcel index.html"
   },
   "keywords": [
-    "html-css-js",
-    "student"
+    "parcel",
+    "spa",
+    "audio",
+    "api",
+    "web"
   ],
   "author": "Manav Misra",
   "license": "MIT",
   "devDependencies": {
-    "browser-sync": "^2.26.13",
+    "autoprefixer": "^9.8.6",
     "eslint": "^7.14.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-import": "^2.22.1",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
+    "postcss": "^8.1.14",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
@@ -35,5 +49,8 @@
     "*.js": "eslint --cache --fix",
     "*.css": "stylelint --fix",
     "*.{js,css,md}": "prettier --write"
+  },
+  "dependencies": {
+    "parcel": "^2.0.0-nightly.467+4aa4acc4"
   }
 }

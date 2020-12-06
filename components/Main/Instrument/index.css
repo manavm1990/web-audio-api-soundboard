@@ -1,0 +1,13 @@
+.btn-caption {
+  margin: 4px 0 2px 0;
+  text-transform: capitalize;
+}
+
+.instrument {
+  font-size: 6em;
+  transition: text-shadow 0.1s ease-in-out;
+}
+
+.instrument:hover {
+  text-shadow: 0 4px 1rem rgba(145, 92, 182, 0.4);
+}
