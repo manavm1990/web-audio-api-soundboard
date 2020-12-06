@@ -1,11 +1,13 @@
-import "./styles/index.css";
 import { Main } from "./components";
+import handlers from "./lib";
+import "./styles/index.css";
 
 const root = document.getElementById("root");
 
 const render = () => {
-  console.log("render");
   root.innerHTML = Main();
+
+  handlers();
 };
 
 render();

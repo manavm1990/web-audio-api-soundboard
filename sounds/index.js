@@ -3,9 +3,9 @@ import playSnare from "./snare.js";
 
 export default {
   q() {
-    playSnare();
-  },
-  w() {
     playKick();
   },
-
+  w() {
+    playSnare();
+  },
+};
