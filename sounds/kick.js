@@ -7,4 +7,5 @@ export default () => {
   oscillator.frequency.setValueAtTime(261.6, 0);
   oscillator.connect(volumeControl);
   oscillator.start();
+  oscillator.stop(context.currentTime + 0.5);
 };
